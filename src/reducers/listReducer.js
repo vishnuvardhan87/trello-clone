@@ -1,35 +1,35 @@
 import {CONSTANTS} from '../actions';
 let listID = 2;
-let cardID = 4;
+let cardID = 5;
 const initialState =[
     {
         title: "Last Episode",
-        id:0,
+        id:`list-${0}`,
         cards:[
             {
-                id: 0,
+                id: `card-${0}`,
                 text:'We created a static list and static card'
             },
             {
-                id:1,
+                id:`card-${1}`,
                 text:'We used a mix between material UI React and components'
             }
         ]
     },
     {
         title: "This Episode",
-        id:1,
+        id:`list-${1}`,
         cards:[
             {
-                id: 0,
+                id: `card-${2}`,
                 text:'We will create our first reducer'
             },
             {
-                id:1,
+                id:`card-${3}`,
                 text:'and render many cards on our list with static data'
             },
             {
-                id:2,
+                id:`card-${4}`,
                 text:'We will also make little changes'
             }
         ]
@@ -42,7 +42,7 @@ const listReducer =(state = initialState,action) =>{
           const newList ={
             title: action.payload,
             cards:[],
-            id: listID
+            id: `list-${listID}`
           }
           listID += 1;
           return [...state, newList];
@@ -50,7 +50,7 @@ const listReducer =(state = initialState,action) =>{
         case CONSTANTS.ADD_CARD:
           const newCard ={
               text: action.payload.text,
-              id: cardID
+              id: `card-${cardID}`
           };
           cardID += 1;
 
